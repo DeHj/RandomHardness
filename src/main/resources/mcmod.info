@@ -1,0 +1,16 @@
+[
+{
+  "modid": "randomhardness",
+  "name": "Random Hardness",
+  "description": "This mod makes the rock irregular in hardness",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["DeHj"],
+  "credits": "The Forge, MCP, and FML guys, for making it possible",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
