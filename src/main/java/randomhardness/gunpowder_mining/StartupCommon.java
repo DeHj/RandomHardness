@@ -12,8 +12,9 @@ public class StartupCommon {
 
     public static void initCommon()
     {
-        ForgeRegistries.VILLAGER_PROFESSIONS.getValue(new ResourceLocation("minecraft:smith")).
-                getCareer(2).addTrade(1, new GunpowderTrades());
+        ForgeRegistries.VILLAGER_PROFESSIONS.getValue(new ResourceLocation("minecraft:smith")).getCareer(0).addTrade(1, new GunpowderTrades());
+        ForgeRegistries.VILLAGER_PROFESSIONS.getValue(new ResourceLocation("minecraft:smith")).getCareer(1).addTrade(1, new GunpowderTrades());
+        ForgeRegistries.VILLAGER_PROFESSIONS.getValue(new ResourceLocation("minecraft:smith")).getCareer(2).addTrade(1, new GunpowderTrades());
     }
 
     public static void postInitCommon()
