@@ -99,4 +99,9 @@ public class ConfigAgent {
         return RandomHardnessConfig.blocksHarvestCat.hardnessGranite;
     }
 
+
+
+    public static int getMinGunpowderDrop() { return RandomHardnessConfig.gunpowderMiningCat.minGunpowderDrop; }
+    public static int getMaxGunpowderDrop() { return RandomHardnessConfig.gunpowderMiningCat.maxGunpowderDrop; }
+    public static String[] getGunpowderTraders() { return RandomHardnessConfig.gunpowderMiningCat.gunpowderTraders; }
 }

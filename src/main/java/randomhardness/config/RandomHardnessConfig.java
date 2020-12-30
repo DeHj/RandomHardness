@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import randomhardness.RandomHardness;
 
-@Config(modid = RandomHardness.MODID, name =  RandomHardness.NAME)
+@Config(modid = RandomHardness.MODID, name = RandomHardness.NAME)
 public class RandomHardnessConfig {
 
     @Config.Name("Harvest speed tab")
@@ -16,6 +16,10 @@ public class RandomHardnessConfig {
 
     @Config.Name("Cracked stone blocks generation tab")
     public static BlockGenerationCategory stoneBlocksGenCat = new BlockGenerationCategory();
+
+    @Config.Name("Gunpowder mining changes tab")
+    public static GunpowderMiningCategory gunpowderMiningCat = new GunpowderMiningCategory();
+
 
     public static class BlockHarvestCategory {
         @Config.Name("1. Global modifier")
@@ -108,6 +112,25 @@ public class RandomHardnessConfig {
             @Config.Name("Average amount of clusters of level 9 cracked per 1000 blocks") public int level9chance = 50;
         }
     }
+
+
+    public static class GunpowderMiningCategory {
+        @Config.Name("Min. creeper drop")
+        @Config.Comment("Min. number of gunpowder that are dropping when killing a creeper.")
+        @Config.RangeInt(min=0, max=6)
+        public int minGunpowderDrop = 1;
+        @Config.Name("Max. creeper drop")
+        @Config.Comment("Max. number of gunpowder that are dropping when killing a creeper.")
+        @Config.RangeInt(min=2, max=8)
+        public int maxGunpowderDrop = 4;
+
+
+        @Config.Name("Villager professions that are trading of gunpowder")
+        @Config.Comment("Already generated villagers will not acquire new recipe")
+        @Config.RequiresMcRestart
+        public String[] gunpowderTraders = new String[] { "minecraft:smith" };
+    }
+
 
     @Mod.EventBusSubscriber(modid = RandomHardness.MODID)
     public static class EventHandler {
