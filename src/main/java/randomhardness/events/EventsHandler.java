@@ -13,18 +13,12 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import randomhardness.config.ConfigAgent;
 import randomhardness.config.RandomHardnessConfig;
-import randomhardness.custom_block_stone.CustomBlockStone;
+import randomhardness.custom_block_stone.BlockCustomStone;
 import randomhardness.custom_block_stone.StoneFactory;
 
 @Mod.EventBusSubscriber
 public class EventsHandler
 {
-    /*
-    @SubscribeEvent
-    public static void click(PlayerInteractEvent.RightClickBlock event) {
-        event.getEntityPlayer().sendMessage(new TextComponentString(event.getPos().toString()));
-    }
-    */
 
     @SubscribeEvent
     public static void speed(PlayerEvent.BreakSpeed event) {
@@ -63,7 +57,7 @@ public class EventsHandler
                 // bricks
                 speedModifier = ConfigAgent.getBrickBlocksHardness() * ConfigAgent.getGlobalModifier();
             }
-            else if (state.getBlock() instanceof CustomBlockStone)
+            else if (state.getBlock() instanceof BlockCustomStone)
             {
                 BlockStone.EnumType variant = state.getValue(BlockStone.VARIANT);
                 speedModifier = ConfigAgent.getGlobalModifier();
@@ -77,7 +71,7 @@ public class EventsHandler
 
                 if (variant == BlockStone.EnumType.STONE)
                 {
-                    Integer hardnessIndex = state.getValue(CustomBlockStone.HARDNESS);
+                    Integer hardnessIndex = state.getValue(BlockCustomStone.HARDNESS);
                     speedModifier *= ConfigAgent.getStoneHardness(hardnessIndex);
                 }
             }
@@ -100,9 +94,9 @@ public class EventsHandler
 
     private static boolean isSmoothStone(IBlockState state)
     {
-        if (state.getBlock() instanceof CustomBlockStone)
+        if (state.getBlock() instanceof BlockCustomStone)
             return (state.getValue(BlockStone.VARIANT) == BlockStone.EnumType.STONE &&
-                    state.getValue(CustomBlockStone.HARDNESS) == 0);
+                    state.getValue(BlockCustomStone.HARDNESS) == 0);
         return false;
     }
 

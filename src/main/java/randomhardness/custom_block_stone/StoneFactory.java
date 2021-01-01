@@ -8,11 +8,11 @@ import java.util.Random;
 
 public class StoneFactory {
 
-    private static final IBlockState[] STONES = new IBlockState[CustomBlockStone.HARDNESS.getAllowedValues().size()];
+    private static final IBlockState[] STONES = new IBlockState[BlockCustomStone.HARDNESS.getAllowedValues().size()];
 
     public static void factoryInit(Block block) {
         for (int i = 0; i < StoneFactory.STONES.length; i++) {
-            StoneFactory.STONES[i] = block.getDefaultState().withProperty(CustomBlockStone.HARDNESS, i);
+            StoneFactory.STONES[i] = block.getDefaultState().withProperty(BlockCustomStone.HARDNESS, i);
         }
     }
 

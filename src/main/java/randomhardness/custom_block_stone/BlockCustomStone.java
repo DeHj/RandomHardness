@@ -21,11 +21,11 @@ import randomhardness.config.ConfigAgent;
 
 import javax.annotation.Nullable;
 
-public class CustomBlockStone extends BlockStone
+public class BlockCustomStone extends BlockStone
 {
     public static final PropertyInteger HARDNESS = PropertyInteger.create("hardness", 0, 9);
 
-    public CustomBlockStone() {
+    public BlockCustomStone() {
         super();
 
         this.setDefaultState(this.blockState.getBaseState()
