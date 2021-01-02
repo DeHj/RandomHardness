@@ -1,14 +1,24 @@
 package randomhardness.gunpowder_mining;
 
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
+import randomhardness.RandomHardness;
 import randomhardness.config.ConfigAgent;
-import randomhardness.config.RandomHardnessConfig;
 
 public class StartupCommon {
     public static void preInitCommon()
     {
+        GameRegistry.addShapelessRecipe(
+                new ResourceLocation(RandomHardness.MODID, "gunpowder"),
+                new ResourceLocation(""),
+                new ItemStack(Items.GUNPOWDER),
+                CraftingHelper.getIngredient(Items.COAL),
+                CraftingHelper.getIngredient(randomhardness.sulfur.StartupCommon.ITEM_SULFUR));
     }
 
     public static void initCommon()
