@@ -1,5 +1,7 @@
 package randomhardness.events;
 
+import net.minecraft.block.BlockAir;
+import net.minecraft.block.BlockSandStone;
 import net.minecraft.block.BlockStone;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
@@ -33,6 +35,20 @@ public class WorldGeneration {
         return false;
     }
 
+    private static boolean isOxidizedSandstone(World w, BlockPos pos)
+    {
+        if (w.getBlockState(pos).getBlock() instanceof BlockSandStone)
+        {
+            for (Vec3i offset: OFFSETS) {
+                if (w.getBlockState(pos.add(offset)).getBlock() instanceof BlockAir)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     private static void createCracksVein(World w, BlockPos pos, int stoneState) {
         w.setBlockState(pos, StoneFactory.getStateByIndex(stoneState));
 
@@ -55,9 +71,22 @@ public class WorldGeneration {
         }
     }
 
+    private static void createSulfurVein(World w, BlockPos pos) {
+        w.setBlockState(pos, randomhardness.sulfur.StartupCommon.SULFUR_ORE.getDefaultState());
+
+        for (Vec3i offset : OFFSETS) {
+            BlockPos newPos = pos.add(offset);
+            if (isOxidizedSandstone(w, newPos))
+            {
+                float prob = w.rand.nextFloat();
+                if (prob < 0.5F)
+                    w.setBlockState(newPos, randomhardness.sulfur.StartupCommon.SULFUR_ORE.getDefaultState());
+            }
+        }
+    }
 
     @SubscribeEvent
-    public static void updateWholeStones(PopulateChunkEvent.Post event) {
+    public static void updateWholeBlocks(PopulateChunkEvent.Post event) {
 
         World w = event.getWorld();
 
@@ -71,9 +100,14 @@ public class WorldGeneration {
 
                     if (isSmoothStone(w.getBlockState(pos))) {
                         int newState = StoneFactory.randStateIndex(w.rand);
-
                         if (newState != 0)
                             createCracksVein(w, pos, newState);
+                    }
+                    else if (isOxidizedSandstone(w, pos))
+                    {
+                        float prob = w.rand.nextFloat();
+                        if (prob < 0.5F)
+                            createSulfurVein(w, pos);
                     }
                 }
             }
