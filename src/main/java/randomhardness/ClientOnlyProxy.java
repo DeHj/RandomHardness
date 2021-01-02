@@ -12,6 +12,7 @@ public class ClientOnlyProxy extends CommonProxy
         super.preInit();
 
         randomhardness.custom_block_stone.StartupClientOnly.preInitClientOnly();
+        randomhardness.sulfur.StartupClientOnly.preInitClientOnly();
     }
 
     public void init()
@@ -19,6 +20,7 @@ public class ClientOnlyProxy extends CommonProxy
         super.init();
 
         randomhardness.custom_block_stone.StartupClientOnly.initClientOnly();
+        randomhardness.sulfur.StartupClientOnly.initClientOnly();
     }
 
     public void postInit()
@@ -26,6 +28,7 @@ public class ClientOnlyProxy extends CommonProxy
         super.postInit();
 
         randomhardness.custom_block_stone.StartupClientOnly.postInitClientOnly();
+        randomhardness.sulfur.StartupClientOnly.postInitClientOnly();
     }
 
     @Override

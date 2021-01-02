@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "normal": { "model": "randomhardness:block_sulfur_model" }
+  }
+}

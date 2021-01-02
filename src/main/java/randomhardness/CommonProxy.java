@@ -9,12 +9,14 @@ public abstract class CommonProxy {
     {
         randomhardness.custom_block_stone.StartupCommon.preInitCommon();
         randomhardness.gunpowder_mining.StartupCommon.preInitCommon();
+        randomhardness.sulfur.StartupCommon.preInitCommon();
     }
 
     public void init()
     {
         randomhardness.custom_block_stone.StartupCommon.initCommon();
         randomhardness.gunpowder_mining.StartupCommon.initCommon();
+        randomhardness.sulfur.StartupCommon.initCommon();
 
         ConfigAgent.Init();
     }
@@ -23,6 +25,7 @@ public abstract class CommonProxy {
     {
         randomhardness.custom_block_stone.StartupCommon.postInitCommon();
         randomhardness.gunpowder_mining.StartupCommon.postInitCommon();
+        randomhardness.sulfur.StartupCommon.postInitCommon();
     }
 
     abstract public boolean playerIsInCreativeMode(EntityPlayer player);
