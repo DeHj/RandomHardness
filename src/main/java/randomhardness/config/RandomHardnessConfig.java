@@ -124,11 +124,14 @@ public class RandomHardnessConfig {
         @Config.RangeInt(min=2, max=8)
         public int maxGunpowderDrop = 4;
 
-
         @Config.Name("Villager professions that are trading of gunpowder")
         @Config.Comment("Already generated villagers will not acquire new recipe")
         @Config.RequiresMcRestart
         public String[] gunpowderTraders = new String[] { "minecraft:smith" };
+
+        @Config.Name("Average amount of sulfur ore veins per 1000 blocks")
+        @Config.Comment("Sulfur ore vein contains from one to four blocks")
+        public int sulfurChance = 30;
     }
 
 

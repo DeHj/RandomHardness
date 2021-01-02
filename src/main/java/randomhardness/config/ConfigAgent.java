@@ -104,4 +104,6 @@ public class ConfigAgent {
     public static int getMinGunpowderDrop() { return RandomHardnessConfig.gunpowderMiningCat.minGunpowderDrop; }
     public static int getMaxGunpowderDrop() { return RandomHardnessConfig.gunpowderMiningCat.maxGunpowderDrop; }
     public static String[] getGunpowderTraders() { return RandomHardnessConfig.gunpowderMiningCat.gunpowderTraders; }
+    public static int getSulfurChance() { return RandomHardnessConfig.gunpowderMiningCat.sulfurChance; }
+
 }

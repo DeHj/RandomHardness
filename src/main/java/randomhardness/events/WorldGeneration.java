@@ -10,6 +10,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import randomhardness.config.ConfigAgent;
 import randomhardness.config.RandomHardnessConfig;
 import randomhardness.custom_block_stone.BlockCustomStone;
 import randomhardness.custom_block_stone.StoneFactory;
@@ -105,8 +106,8 @@ public class WorldGeneration {
                     }
                     else if (isOxidizedSandstone(w, pos))
                     {
-                        float prob = w.rand.nextFloat();
-                        if (prob < 0.5F)
+                        int prob = w.rand.nextInt(1000);
+                        if (prob < ConfigAgent.getSulfurChance())
                             createSulfurVein(w, pos);
                     }
                 }
