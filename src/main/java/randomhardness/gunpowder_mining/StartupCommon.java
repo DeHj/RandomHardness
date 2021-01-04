@@ -16,7 +16,7 @@ public class StartupCommon {
         GameRegistry.addShapelessRecipe(
                 new ResourceLocation(RandomHardness.MODID, "gunpowder"),
                 new ResourceLocation(""),
-                new ItemStack(Items.GUNPOWDER),
+                new ItemStack(Items.GUNPOWDER, 2),
                 CraftingHelper.getIngredient(Items.COAL),
                 CraftingHelper.getIngredient(randomhardness.sulfur.StartupCommon.ITEM_SULFUR));
     }
