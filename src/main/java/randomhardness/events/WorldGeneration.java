@@ -28,6 +28,25 @@ public class WorldGeneration {
         OFFSETS[5] = new Vec3i(-1, 0, 0);
     }
 
+    private static final Vec3i[] AIR_ADJACENCY_CHECKS = new Vec3i[32];
+    static {
+        int index = 0;
+        for (int x = -1; x <= 1; x++) for (int y = -1; y <= 1; y++) for (int z = -1; z <= 1; z++)
+        {
+            if (x == 0 && y == 0 && z == 0)
+                continue;
+            AIR_ADJACENCY_CHECKS[index] = new Vec3i(x, y, z);
+            index++;
+        }
+
+        AIR_ADJACENCY_CHECKS[index++] = new Vec3i(0, 0, 2);
+        AIR_ADJACENCY_CHECKS[index++] = new Vec3i(0, 0, -2);
+        AIR_ADJACENCY_CHECKS[index++] = new Vec3i(0, 2, 0);
+        AIR_ADJACENCY_CHECKS[index++] = new Vec3i(0, -2, 0);
+        AIR_ADJACENCY_CHECKS[index++] = new Vec3i(2, 0, 0);
+        AIR_ADJACENCY_CHECKS[index] = new Vec3i(-2, 0, 0);
+    }
+
     private static boolean isSmoothStone(IBlockState state)
     {
         if (state.getBlock() instanceof BlockCustomStone)
@@ -40,7 +59,7 @@ public class WorldGeneration {
     {
         if (w.getBlockState(pos).getBlock() instanceof BlockSandStone)
         {
-            for (Vec3i offset: OFFSETS) {
+            for (Vec3i offset: AIR_ADJACENCY_CHECKS) {
                 if (w.getBlockState(pos.add(offset)).getBlock() instanceof BlockAir)
                 {
                     return true;
