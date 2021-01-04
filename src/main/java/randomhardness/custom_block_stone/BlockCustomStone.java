@@ -42,18 +42,9 @@ public class BlockCustomStone extends BlockStone
         return BlockRenderLayer.SOLID;
     }
 
-
     @Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+    public IBlockState getStateFromMeta(int meta)
     {
-        //playerIn.sendMessage(new TextComponentString("hardness=" + state.getValue(HARDNESS).toString()));
-
-        return false;
-    }
-
-
-    @Override
-    public IBlockState getStateFromMeta(int meta) {
         // meta values { 7, 8, ... , 15 } match a stone with hardness value from 1 to 9
         if (meta < 7)
             return this.getDefaultState().withProperty(VARIANT, BlockStone.EnumType.byMetadata(meta)).withProperty(HARDNESS, 0);
@@ -61,9 +52,9 @@ public class BlockCustomStone extends BlockStone
             return this.getDefaultState().withProperty(VARIANT, EnumType.STONE).withProperty(HARDNESS,meta - 6);
     }
 
-
     @Override
-    public int getMetaFromState(IBlockState state) {
+    public int getMetaFromState(IBlockState state)
+    {
         int meta = state.getValue(VARIANT).getMetadata();
         int hardness = state.getValue(HARDNESS);
         if (meta == 0 && hardness > 0)
