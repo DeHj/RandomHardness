@@ -5,6 +5,7 @@ import net.minecraft.block.BlockSandStone;
 import net.minecraft.block.BlockStone;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
@@ -75,16 +76,24 @@ public class WorldGeneration {
         if (stoneState <= 1)
             return;
 
+        ChunkPos chunkPos = w.getChunkFromBlockCoords(pos).getPos();
+
         for (Vec3i offset: OFFSETS) {
             BlockPos newPos = pos.add(offset);
             if (isSmoothStone(w.getBlockState(newPos)) == false)
                 continue;
 
-            float prob = RandomHardnessConfig.stoneBlocksGenCat.probability;
-            int from = RandomHardnessConfig.stoneBlocksGenCat._fromState;
-            int to = RandomHardnessConfig.stoneBlocksGenCat._toState;
+            if (    newPos.getX() < chunkPos.x * 16 ||
+                    newPos.getX() >= (chunkPos.x + 1) * 16 ||
+                    newPos.getZ() < chunkPos.z * 16 ||
+                    newPos.getZ() >= (chunkPos.z + 1) * 16) {
+                continue;
+            }
 
-            int state = StoneFactory.randIndexFromRange(w.rand, prob, stoneState - from, stoneState - to);
+            int state = StoneFactory.randIndexFromRange(w.rand,
+                    RandomHardnessConfig.stoneBlocksGenCat.probability,
+                    stoneState - RandomHardnessConfig.stoneBlocksGenCat._fromState,
+                    stoneState - RandomHardnessConfig.stoneBlocksGenCat._toState);
 
             if (state > 0)
                 createCracksVein(w, newPos, state);
