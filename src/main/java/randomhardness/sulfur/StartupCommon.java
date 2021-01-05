@@ -12,7 +12,7 @@ public class StartupCommon {
 
     public static void preInitCommon()
     {
-        SULFUR_ORE.setRegistryName("block_sulfur_registry_name");
+        SULFUR_ORE.setRegistryName("sulfur_ore_registry_name");
         //SULFUR_ORE.setRegistryName(new ResourceLocation("randomhardness", "block_sulfur_registry_name"));//"hardness:block_sulfur_registry_name");
         ForgeRegistries.BLOCKS.register(SULFUR_ORE);
 
