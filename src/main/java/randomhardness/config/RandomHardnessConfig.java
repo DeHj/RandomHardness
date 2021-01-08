@@ -113,7 +113,6 @@ public class RandomHardnessConfig {
         }
     }
 
-
     public static class GunpowderMiningCategory {
         @Config.Name("Min. creeper drop")
         @Config.Comment("Min. number of gunpowder that are dropping when killing a creeper.")
@@ -127,7 +126,7 @@ public class RandomHardnessConfig {
         @Config.Name("Villager professions that are trading of gunpowder")
         @Config.Comment("Already generated villagers will not acquire new recipe")
         @Config.RequiresMcRestart
-        public String[] gunpowderTraders = new String[] { "minecraft:smith" };
+        public String[] gunpowderTraders = new String[] { "minecraft:priest" };
 
         @Config.Name("Average amount of sulfur ore veins per 1000 blocks")
         @Config.Comment("Sulfur ore vein contains from one to four blocks")

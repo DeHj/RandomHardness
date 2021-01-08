@@ -16,6 +16,6 @@ public class GunpowderTrades implements EntityVillager.ITradeList
     {
         recipeList.add(new MerchantRecipe(
                 new ItemStack(Items.EMERALD,1),
-                new ItemStack(Items.GUNPOWDER, random.nextInt(3) + 2)));
+                new ItemStack(Items.GUNPOWDER, random.nextInt(5) + 7)));
     }
 }
