@@ -8,6 +8,5 @@ public class BlockSulfur extends Block {
     public BlockSulfur() {
         super(Material.ROCK);
         this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
-        this.setHardness(0.8F);
     }
 }
