@@ -1,6 +1,7 @@
 # RandomHardness
 
 Random Hardness is a Minecraft mod that changes gameplay mining experience.
+
 You can find this mod on [CurseForge](https://www.curseforge.com/minecraft/mc-mods/random-hardness).
 
 Features:
